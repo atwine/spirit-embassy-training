@@ -944,14 +944,15 @@
       <!-- If first_name and last_name are passed from the registration form, they are forwarded to the quiz form -->
       <a id="quiz-link" href="https://tally.so/r/PdgBde" class="btn">Start the Quiz &rarr;</a>
       <script>
-        // Read first_name and last_name from the URL and pass them to the quiz form
+        // Read first and last name from the URL (supports both underscore and hyphen parameter names)
         const urlParams = new URLSearchParams(window.location.search);
-        const firstName = urlParams.get('first_name');
-        const lastName = urlParams.get('last_name');
+        const firstName = urlParams.get('first_name') || urlParams.get('first-name');
+        const lastName = urlParams.get('last_name') || urlParams.get('last-name');
 
         if (firstName && lastName) {
+          // Tally visible fields use hyphenated slugs for autofill
           const quizLink = document.getElementById('quiz-link');
-          quizLink.href = `https://tally.so/r/PdgBde?first_name=${encodeURIComponent(firstName)}&last_name=${encodeURIComponent(lastName)}`;
+          quizLink.href = `https://tally.so/r/PdgBde?first-name=${encodeURIComponent(firstName)}&last-name=${encodeURIComponent(lastName)}`;
         }
       </script>
     </div>
