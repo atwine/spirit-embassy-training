@@ -941,7 +941,19 @@
       <h2>Take the Quiz</h2>
       <p>A 15-question quiz on Chapters 6 &amp; 7. Built to reinforce the practical principles taught by Cardinal Moses and the Seer so that this Word stays with you.</p>
       <!-- TALLY QUIZ FORM URL: https://tally.so/r/PdgBde -->
-      <a href="https://tally.so/r/PdgBde" class="btn">Start the Quiz &rarr;</a>
+      <!-- If first_name and last_name are passed from the registration form, they are forwarded to the quiz form -->
+      <a id="quiz-link" href="https://tally.so/r/PdgBde" class="btn">Start the Quiz &rarr;</a>
+      <script>
+        // Read first_name and last_name from the URL and pass them to the quiz form
+        const urlParams = new URLSearchParams(window.location.search);
+        const firstName = urlParams.get('first_name');
+        const lastName = urlParams.get('last_name');
+
+        if (firstName && lastName) {
+          const quizLink = document.getElementById('quiz-link');
+          quizLink.href = `https://tally.so/r/PdgBde?first_name=${encodeURIComponent(firstName)}&last_name=${encodeURIComponent(lastName)}`;
+        }
+      </script>
     </div>
   </section>
 
