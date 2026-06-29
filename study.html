@@ -950,9 +950,9 @@
         const lastName = urlParams.get('last_name') || urlParams.get('last-name');
 
         if (firstName && lastName) {
-          // Tally visible fields use hyphenated slugs for autofill
+          // Tally hidden fields are named first_name and last_name (case-sensitive)
           const quizLink = document.getElementById('quiz-link');
-          quizLink.href = `https://tally.so/r/PdgBde?first-name=${encodeURIComponent(firstName)}&last-name=${encodeURIComponent(lastName)}`;
+          quizLink.href = `https://tally.so/r/PdgBde?first_name=${encodeURIComponent(firstName)}&last_name=${encodeURIComponent(lastName)}`;
         }
       </script>
     </div>
